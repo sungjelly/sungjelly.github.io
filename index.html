@@ -66,6 +66,7 @@
     .project-subtitle { font-size: .875rem; color: var(--blue); margin: 0 0 .75rem; }
     .project p.description { font-size: 1rem; line-height: 1.65; margin: 0 0 .75rem; }
     .project a, summary { font-size: .875rem; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 1.2rem; }
     details { margin-top: .65rem; }
     summary { color: var(--blue); cursor: pointer; width: fit-content; padding: .1rem 0; }
     details p { font-size: .875rem; color: var(--muted); line-height: 1.7; margin: .65rem 0 0; }
@@ -113,6 +114,7 @@
         <!-- Add a confirmed current affiliation and public email here when ready. -->
         </div>
         <div class="profile-links">
+          <a href="Sungjae_Lee_CV.pdf" type="application/pdf">CV (PDF)</a>
           <a href="https://github.com/sungjelly">GitHub</a>
           <a href="https://www.linkedin.com/in/sungjae-lee-93abb141b/">LinkedIn</a>
           <a href="https://blog.naver.com/sungjelly">Physics notes</a>
@@ -174,7 +176,10 @@
               <h3>Bio-Architectural Graph Modeling</h3>
               <p class="project-subtitle">BAGM · Spatial transcriptomics</p>
               <p class="description">Learning cell representations from gene expression and spatial neighborhoods in gastric tissue. Geometry-aware graph attention and masked-expression prediction connect cellular information with tissue organization.</p>
-              <a href="https://github.com/sungjelly/Bio-Architectural-Graph-Modeling">Code &amp; project details</a>
+              <div class="project-links">
+                <a href="BAGM_Paper.pdf" type="application/pdf">Paper (PDF)</a>
+                <a href="https://github.com/sungjelly/Bio-Architectural-Graph-Modeling">Code &amp; project details</a>
+              </div>
               <details>
                 <summary>Research focus</summary>
                 <p>I investigate what spatial context adds beyond a cell’s own features, and how learned representations can support tissue analysis and the study of candidate gene and cell dependencies.</p>
