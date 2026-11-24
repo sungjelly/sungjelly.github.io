@@ -33,6 +33,8 @@
     .nav a:hover { color: var(--blue); text-decoration: underline; }
     .layout { display: grid; grid-template-columns: 235px minmax(0, 1fr); gap: 5.2rem; padding-top: 4.4rem; }
     .profile { align-self: start; position: sticky; top: 2.5rem; }
+    .portrait { display: block; width: 100%; aspect-ratio: 1; margin-bottom: 1.7rem; overflow: hidden; border-radius: 6px; background: var(--soft); }
+    .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.7); transform-origin: 70% 55%; }
     .profile-rule { width: 34px; height: 3px; background: var(--blue); margin-bottom: 1.65rem; }
     h1 { font: 400 3.45rem/1.07 var(--serif); letter-spacing: -.055em; margin: 0 0 .75rem; }
     .korean-name { color: var(--muted); font-size: 1rem; letter-spacing: .12em; margin: 0 0 1.65rem; }
@@ -54,6 +56,10 @@
     .project + .project { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
     .project figure { margin: .25rem 0 0; }
     .project-art { display: block; width: 100%; height: auto; background: var(--soft); border: 1px solid #edf0f4; border-radius: 5px; }
+    .project-bagm { display: flex; flex-direction: column; gap: 1.2rem; }
+    .project.project-bagm figure { display: block; order: 2; margin: 0; }
+    .project-bagm .project-art { background: #fff; }
+    .project-bagm figcaption { text-align: left; font-size: .8125rem; }
     figcaption { color: var(--muted); font-size: .75rem; text-align: center; margin-top: .5rem; }
     .project .category { margin: 0 0 .3rem; color: var(--muted); font-size: .75rem; letter-spacing: .055em; }
     h3 { font-size: 1.15rem; line-height: 1.4; font-weight: 600; margin: 0 0 .25rem; letter-spacing: -.02em; }
@@ -74,7 +80,7 @@
     .footer { border-top: 1px solid var(--line); padding: 1.35rem 0 1.7rem; display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .8125rem; }
     .footer a { color: var(--muted); }
     @media (max-width: 1000px) { .shell { padding: 0 2rem; } .layout { grid-template-columns: 195px minmax(0, 1fr); gap: 3rem; } h1 { font-size: 3rem; } .project { grid-template-columns: 125px minmax(0, 1fr); gap: 1.25rem; } }
-    @media (max-width: 760px) { .shell { padding: 0 1.5rem; } .header { min-height: 86px; } .brand span { display: none; } .nav { gap: 1.15rem; } .layout { display: block; padding-top: 2.5rem; } .profile { position: static; padding-bottom: 2.5rem; border-bottom: 1px solid var(--line); margin-bottom: 2.5rem; } h1 { font-size: 3rem; } h1 br { display: none; } .korean-name { margin-bottom: 1.1rem; } .profile-rule { margin-bottom: 1.2rem; } .role { margin-bottom: .7rem; } .profile-links { flex-direction: row; flex-wrap: wrap; gap: 1.25rem; border: 0; margin-top: 1.1rem; padding: 0; } .intro h2 { font-size: 2.2rem; } .section { margin-top: 2.5rem; } .project { grid-template-columns: 125px minmax(0, 1fr); } }
+    @media (max-width: 760px) { .shell { padding: 0 1.5rem; } .header { min-height: 86px; } .brand span { display: none; } .nav { gap: 1.15rem; } .layout { display: block; padding-top: 2.5rem; } .profile { position: static; display: grid; grid-template-columns: minmax(0, 1fr) 112px; gap: 0 1rem; align-items: start; padding-bottom: 2.5rem; border-bottom: 1px solid var(--line); margin-bottom: 2.5rem; } .portrait { grid-column: 2; grid-row: 1; margin: 0; } .profile-main { grid-column: 1; grid-row: 1; } h1 { font-size: 2.5rem; } .korean-name { margin-bottom: 1.1rem; } .profile-rule { margin-bottom: 1.2rem; } .role { margin-bottom: .7rem; } .profile-links { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 1.25rem; border: 0; margin-top: 1.1rem; padding: 0; } .intro h2 { font-size: 2.2rem; } .section { margin-top: 2.5rem; } .project { grid-template-columns: 125px minmax(0, 1fr); } }
     @media (max-width: 480px) { .header { flex-wrap: wrap; gap: 0; padding: 1.05rem 0 .7rem; } .brand { width: 100%; margin-bottom: .25rem; } .nav { width: 100%; justify-content: space-between; gap: .65rem; } .project { grid-template-columns: 1fr; gap: .9rem; } .project figure { display: none; } .section-heading { margin-bottom: 1.45rem; } .section-note { display: none; } .background-item { grid-template-columns: 1fr; gap: .3rem; } .footer { flex-direction: column; gap: .3rem; } .interests span { padding: 0 .2rem; } }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     @media print { .shell { max-width: none; padding: 0; } .header, .profile-links, details, .skip { display: none; } .layout { display: block; padding: 0; } .profile { position: static; margin-bottom: 2rem; } h1 br { display: none; } .section { margin-top: 1.5rem; } .project { break-inside: avoid; } .footer { margin-top: 1rem; } }
@@ -95,12 +101,17 @@
 
     <div class="layout">
       <aside class="profile" aria-label="Profile">
+        <a class="portrait" href="portrait.svg" aria-label="View full-size photo of Sungjae Lee">
+          <img src="portrait.svg" alt="Sungjae Lee wearing a suit outdoors" width="1212" height="1212" fetchpriority="high" decoding="async">
+        </a>
+        <div class="profile-main">
         <div class="profile-rule" aria-hidden="true"></div>
         <h1>Sungjae<br> Lee</h1>
         <p class="korean-name" lang="ko">이성재</p>
         <p class="role">Machine learning<br>Research &amp; engineering</p>
         <p class="education-note">KAIST, B.S. ’26<br>Physics &amp; Computer Science</p>
         <!-- Add a confirmed current affiliation and public email here when ready. -->
+        </div>
         <div class="profile-links">
           <a href="https://github.com/sungjelly">GitHub</a>
           <a href="https://www.linkedin.com/in/sungjae-lee-93abb141b/">LinkedIn</a>
@@ -151,17 +162,12 @@
             </div>
           </article>
 
-          <article class="project">
+          <article class="project project-bagm">
             <figure>
-              <svg class="project-art" viewBox="0 0 152 142" role="img" aria-labelledby="graph-title">
-                <title id="graph-title">Concept illustration of a cell and its spatial neighborhood, not measured tissue data</title>
-                <circle cx="76" cy="62" r="43" fill="none" stroke="#d6deed" stroke-dasharray="3 4"/>
-                <g stroke="#afbed6" stroke-width="1.2"><path d="M76 62L42 37M76 62L106 32M76 62L118 69M76 62L86 102M76 62L35 82M42 37L106 32M106 32L118 69M118 69L86 102M86 102L35 82M35 82L42 37"/></g>
-                <g fill="#a6b7d4" stroke="#f5f7fa" stroke-width="3"><circle cx="42" cy="37" r="7"/><circle cx="106" cy="32" r="6"/><circle cx="118" cy="69" r="8"/><circle cx="86" cy="102" r="6"/><circle cx="35" cy="82" r="7"/></g>
-                <circle cx="76" cy="62" r="13" fill="#e1e7f3"/><circle cx="76" cy="62" r="8" fill="#344e86"/>
-                <text x="76" y="129" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#626b79">Spatial context</text>
-              </svg>
-              <figcaption>Concept illustration</figcaption>
+              <a href="bagm-architecture.svg" aria-label="View the full-size BAGM architecture diagram">
+                <img class="project-art" src="bagm-architecture.svg" width="2048" height="1154" loading="lazy" decoding="async" alt="BAGM architecture: masked gene expression, mask indicators, and metadata enter a cell encoder. A geometry encoder supplies spatial bias to four graph attention layers. A decoder predicts expression with loss on masked entries.">
+              </a>
+              <figcaption>BAGM architecture: learning cell representations through masked-expression prediction. <a href="bagm-architecture.svg">View full-size diagram</a>.</figcaption>
             </figure>
             <div>
               <p class="category">SPATIAL REPRESENTATION LEARNING</p>
